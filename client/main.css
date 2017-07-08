@@ -1,0 +1,21 @@
+/* CSS declarations go here */
+
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  height: 20px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  width: 20px;
+}
+
+.alive {
+  background-color: red;
+}
+
+.board{
+  max-width: 200px;
+  margin: auto;
+}
