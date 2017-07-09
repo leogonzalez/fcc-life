@@ -14,6 +14,7 @@ export default class Board extends React.Component {
     }
   }
   checkStatus(n, number){
+
     let sum = 0;
     (n+number >=0)? (this.state.isAlive[n+number]? sum++ : undefined):undefined;
     (n-number >=0)? (this.state.isAlive[n-number]? sum++ : undefined):undefined;
@@ -24,22 +25,26 @@ export default class Board extends React.Component {
     (n-number+1 >=0)? (this.state.isAlive[n-number+1]? sum++ : undefined):undefined;
     (n-number-1 >=0)? (this.state.isAlive[n-number-1]? sum++ : undefined):undefined;
 
-    if (sum>=3) {
+    if (this.state.isAlive[n] && (sum===3 || sum===2)){
+        return true;
+    } else if (sum===3) {
       return true;
-    } else if (sum<3){
+    } else {
       return false;
     }
 
   }
   finishGeneretion(){
-    const matrix = this.state.isAlive;
+    const matrix = new Array(number);
     board.map((item) => {
       matrix[item] = this.checkStatus(item,numberSqrt);
+
+
+
     });
     this.setState({
       isAlive: matrix
     });
-
   }
   onClickHandler(i){
     const matrix = this.state.isAlive;
