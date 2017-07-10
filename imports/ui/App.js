@@ -5,7 +5,7 @@ import Board from './Board.js';
 export default function App() {
   return(
     <div>
-      <h1>Welcome to the Game of Life</h1>
+      <h1 className='title'>Welcome to the Game of Life</h1>
       <Board/>
     </div>
   );

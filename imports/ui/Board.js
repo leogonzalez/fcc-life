@@ -12,7 +12,7 @@ export default class Board extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-    isAlive: [...Array(number)].map((item) => false)
+    isAlive: [...Array(number)].map((item) => (Math.random() >= 0.5))
     }
   }
   checkStatus(n, number){
