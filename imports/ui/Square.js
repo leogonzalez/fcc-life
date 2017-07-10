@@ -7,6 +7,6 @@ export default function Square(props) {
     <button
       className={status}
       onClick={props.onClickHandler}
-    >{props.position}</button>
+    ></button>
   );
 }

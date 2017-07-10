@@ -2,9 +2,11 @@ import React from 'react';
 
 import Square from './Square.js';
 
-const number = 100;
-const numberSqrt = 10;
+const number = 400;
+const numberSqrt = 20;
 const board = [...Array(number)].map((item,i) => i);
+let myTimer;
+let generations;
 
 export default class Board extends React.Component {
   constructor(props){
@@ -38,14 +40,26 @@ export default class Board extends React.Component {
     const matrix = new Array(number);
     board.map((item) => {
       matrix[item] = this.checkStatus(item,numberSqrt);
-
-
-
     });
     this.setState({
       isAlive: matrix
     });
+    generations++;
   }
+
+  runGeneration(){
+    generations =0;
+    myTimer = setInterval(() => {
+      this.finishGeneretion();
+    },500);
+
+  }
+
+  stopGeneration(){
+    clearInterval(myTimer);
+    generations =0;
+  }
+
   onClickHandler(i){
     const matrix = this.state.isAlive;
     matrix[i]=!this.state.isAlive[i]
@@ -53,6 +67,7 @@ export default class Board extends React.Component {
       isAlive:matrix
     });
   }
+
   clearHandler(){
     this.setState({
       isAlive:[...Array(number)].map((item) => false)
@@ -73,8 +88,10 @@ export default class Board extends React.Component {
             )
           })
         }
-        <button onClick={() => this.finishGeneretion()}>Check Sum</button>
+        <button onClick={() => this.runGeneration()}>Run</button>
         <button onClick={() => this.clearHandler()}>Clear</button>
+        <button onClick={() => this.stopGeneration()}>StopRun</button>
+        <p> This is Generation: {generations}</p>
       </div>
     );
   }
